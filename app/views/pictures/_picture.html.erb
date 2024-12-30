@@ -1,0 +1,26 @@
+  <div class="d-flex">
+    <div class="card">
+      <% if picture.image.attached? %>
+          <%= image_tag picture.image, class: 'img-fluid', alt: picture.name %>
+        <% else %>
+          <p>No hay una imagen</p>
+        <% end %>
+      <div class="card-body">
+        <p class="card-text letra"><strong><%= picture.name %></strong></p>
+        <% picture.comments.each do |comment| %>
+          <p> * (<%= comment.user.name %>) dijo: <%= comment.content %></p>
+        <% end %>
+        <% if user_signed_in? %>
+          <%= form_with(model: [picture, Comment.new]) do |form| %>
+            <div class="form-group">
+              <%= form.label :Comentar %>
+              <%= form.text_area :content, class: "form-control" %>
+            </div>
+            <%= form.submit "Enviar Comentario", class: "btn btn-outline-secondary btn-sm" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+

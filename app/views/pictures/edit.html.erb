@@ -1,0 +1,12 @@
+<% content_for :title, "Modificar Fotografía" %>
+
+<h1>Modificar Fotografía</h1>
+
+<%= render "form", picture: @picture %>
+
+<br>
+
+<div>
+  <%= link_to "Mostrar esta fotografía", @picture, class: "btn btn-outline-secondary btn-sm" %> |
+  <%= link_to "Volver", pictures_path, class: "btn btn-outline-secondary btn-sm" %>
+</div>
